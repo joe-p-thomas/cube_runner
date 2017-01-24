@@ -1,0 +1,21 @@
+# MVP
+- add modal to prompt user to start the Game
+x add checks for collision
+- add better checks for collisions
+- add checks for when to stop displaying an obstacle
+- work out better equations for how obstacles move
+x move player to separate file
+- look into good fonts
+
+# Bonus
+- keep track of high score using cookies
+- have special obstacles to hit for bonus points
+- add a cooler icon
+- add shadow under icon
+
+# Peer Review
+-
+-
+-
+-
+-
