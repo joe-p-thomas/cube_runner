@@ -45,11 +45,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	const Game = __webpack_require__(1);
+	const Demo = __webpack_require__(4);
 	
 	document.addEventListener("DOMContentLoaded", () => {
 	  const canvas = document.getElementById('root');
 	  canvas.width = window.innerWidth * .99;
 	  canvas.height = window.innerHeight * .96;
+	  const demo = new Demo(canvas);
+	  demo.render();
 	
 	  const promptNewGame = (score) => {
 	    document.getElementById('score').innerHTML = score;
@@ -61,6 +64,7 @@
 	  const startButton = document.getElementById('start');
 	  startButton.addEventListener('click', () => {
 	    menu.className = 'hidden';
+	    demo.pause();
 	    game.start();
 	  });
 	
@@ -289,6 +293,56 @@
 	}
 	
 	module.exports = Player;
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const Obstacle = __webpack_require__(2);
+	
+	class Demo {
+	  constructor(canvas) {
+	    this.windowWidth = canvas.width;
+	    this.windowHeight = canvas.height;
+	    this.ctx = canvas.getContext("2d");
+	
+	    this.obstacles = [];
+	    this.paused = false;
+	  }
+	
+	  start() {
+	    this.render();
+	  }
+	
+	  pause() {
+	    this.paused = true;
+	    this.ctx.clearRect(0, 0, this.windowWidth, this.windowHeight);
+	  }
+	
+	  addObstacle(step) {
+	    if (step % 4 === 0) {
+	      this.obstacles.unshift(new Obstacle(this.windowWidth,
+	                                          this.windowHeight));
+	      if (this.obstacles.length > 155) {
+	        this.obstacles = this.obstacles.slice(0,-1);
+	      }
+	    }
+	  }
+	
+	  render(step = 0) {
+	    step += 1;
+	    this.addObstacle(step);
+	    this.ctx.clearRect(0, 0, this.windowWidth, this.windowHeight);
+	    this.obstacles.forEach((obstacle) => obstacle.render(this.ctx, 0));
+	    if (!this.paused) {
+	      setTimeout(() => this.render(step), 1000/60);
+	    }
+	  }
+	
+	}
+	
+	module.exports = Demo;
 
 
 /***/ }

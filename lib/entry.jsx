@@ -1,9 +1,12 @@
 const Game = require('./game');
+const Demo = require('./demo');
 
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById('root');
   canvas.width = window.innerWidth * .99;
   canvas.height = window.innerHeight * .96;
+  const demo = new Demo(canvas);
+  demo.render();
 
   const promptNewGame = (score) => {
     document.getElementById('score').innerHTML = score;
@@ -15,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const startButton = document.getElementById('start');
   startButton.addEventListener('click', () => {
     menu.className = 'hidden';
+    demo.pause();
     game.start();
   });
 
