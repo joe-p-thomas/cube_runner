@@ -1,17 +1,19 @@
 # MVP
-- add modal to prompt user to start the Game
+- add menu to prompt user to start the Game
 x add checks for collision
 - add better checks for collisions
 - add checks for when to stop displaying an obstacle
 - work out better equations for how obstacles move
 x move player to separate file
-- look into good fonts
+- look into fonts
+- how to pause game
+- player can accelerate in the vertical direction
 
 # Bonus
 - keep track of high score using cookies
 - have special obstacles to hit for bonus points
 - add a cooler icon
-- add shadow under icon
+x add shadow under icon
 
 # Peer Review
 -
@@ -19,3 +21,12 @@ x move player to separate file
 -
 -
 -
+
+
+# Resume
+- fix justification
+- full stack, what did lifecycles do
+- edu dates justify right
+- more tech oriented fd exp
+- try to quantify acheivements for job exp
+- include subject taught to students

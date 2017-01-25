@@ -46,13 +46,13 @@
 
 	const Game = __webpack_require__(1);
 	
-	
 	document.addEventListener("DOMContentLoaded", () => {
 	  const canvas = document.getElementById('root');
 	  canvas.width = window.innerWidth * .99;
 	  canvas.height = window.innerHeight * .96;
 	
-	  new Game(canvas).start();
+	  const game = new Game(canvas);
+	  game.start();
 	});
 
 
@@ -62,6 +62,7 @@
 
 	const Obstacle = __webpack_require__(2);
 	const Player = __webpack_require__(3);
+	const key = window.key;
 	
 	class Game {
 	  constructor(canvas) {
@@ -71,11 +72,12 @@
 	
 	    this.player = new Player(this.windowWidth, this.windowHeight);
 	    this.obstacles = [];
+	    this.score = 0;
 	  }
 	
 	  start() {
-	    this.addObstacle();
-	    this.render(0);
+	    this.render();
+	    return this.score;
 	  }
 	
 	  addObstacle(step) {
@@ -89,24 +91,24 @@
 	  }
 	
 	  checkCollissions() {
-	    let collision;
+	    let collision = false;
 	
 	    this.obstacles.forEach((obstacle) => {
-	      collision = false;
 	      let obstacleBottomY = obstacle.y + obstacle.height / 2;
 	      let obstacleLeftX = obstacle.x - obstacle.width / 2;
 	      let obstacleRightX = obstacle.x + obstacle.width / 2;
-	
+	      
 	      if (this.player.startY < obstacleBottomY &&
 	          this.player.bottomY > obstacleBottomY &&
 	          this.player.startX > obstacleLeftX &&
 	          this.player.startX < obstacleRightX) {
-	        console.log("Collision!");
+	        collision = true;
 	      }
 	    });
+	    return collision;
 	  }
 	
-	  render(step) {
+	  render(step = 0) {
 	    step += 1;
 	
 	    let shift = 0;
@@ -115,8 +117,6 @@
 	    } else if (key.isPressed('right')) {
 	      shift = -1;
 	    }
-	    this.checkCollissions();
-	
 	
 	    this.addObstacle(step);
 	    this.ctx.clearRect(0, 0, this.windowWidth, this.windowHeight);
@@ -124,13 +124,16 @@
 	    this.renderScore(step);
 	    this.obstacles.forEach((obstacle) => obstacle.render(this.ctx, shift));
 	
-	    setTimeout(() => this.render(step), 1000/60);
+	    if (!this.checkCollissions()) {
+	      setTimeout(() => this.render(step), 1000/60);
+	    }
 	  }
 	
 	  renderScore(step) {
+	    this.score = Math.round(step/10);
 	    this.ctx.font= '20px Arial';
 	    this.ctx.fillStyle = 'black';
-	    this.ctx.fillText(Math.round(step/10), 10, 20);
+	    this.ctx.fillText(this.score, 10, 20);
 	  }
 	}
 	
@@ -148,7 +151,6 @@
 	
 	    this.color = 255;
 	
-	    // position is measured as the center of the obstacle
 	    this.x = windowWidth * Math.random();
 	    this.y = windowHeight / 2;
 	
@@ -168,6 +170,8 @@
 	  }
 	
 	  render(ctx, shift) {
+	    this.move(shift);
+	    this.resize();
 	    this.color -= 1;
 	    if (this.color < 5) {
 	      this.color = 0;
@@ -177,9 +181,8 @@
 	                 this.y - (this.height / 2),
 	                 this.width,
 	                 this.height);
-	    this.move(shift);
-	    this.resize();
 	  }
+	
 	}
 	
 	module.exports = Obstacle;
