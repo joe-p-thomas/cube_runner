@@ -4,16 +4,26 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="menus.css">
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <script src="./lib/keymaster.js"></script>
     <script src="./bundle.js"></script>
   </head>
   <body>
 
     <div id='menu' class='shown'>
+      <h1>Cube Runner</h1>
+      <div>
+        <p>Controls:</p>
+        <p> arrows - drive</p>
+        <p> space - pause</p>
+      </div>
       <button id='start'>Play Game</button>
     </div>
 
     <div id='game_over' class='hidden'>
+      <h2>Game Over</h2>
+      <p>Your Score:</p>
+      <p id='score'></p>
       <button id='retry'>Retry</button>
     </div>
 

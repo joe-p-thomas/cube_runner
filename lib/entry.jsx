@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const promptNewGame = (score) => {
+    document.getElementById('score').innerHTML = score;
     gameOver.className = 'shown';
   };
 });

@@ -66,6 +66,7 @@
 	  });
 	
 	  const promptNewGame = (score) => {
+	    document.getElementById('score').innerHTML = score;
 	    gameOver.className = 'shown';
 	  };
 	});
@@ -102,7 +103,7 @@
 	  }
 	
 	  gameOver() {
-	    this.gameOverCB();
+	    this.gameOverCB(Math.round(this.step/10));
 	  }
 	
 	  togglePause(){
@@ -171,13 +172,13 @@
 	
 	  renderScore(step) {
 	    this.step = step;
-	    this.ctx.font= '20px Arial';
+	    this.ctx.font= '35px VT323';
 	    this.ctx.fillStyle = 'black';
-	    this.ctx.fillText(Math.round(step/10), 10, 20);
+	    this.ctx.fillText(Math.round(step/10), 10, 25);
 	  }
 	
 	  renderPause() {
-	    this.ctx.fillStyle = "lightgrey";
+	    this.ctx.fillStyle = "#EEE";
 	    this.ctx.fillRect((this.windowWidth / 2) - 45,
 	                      (this.windowHeight / 2) - 45,
 	                      90,
