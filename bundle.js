@@ -51,8 +51,23 @@
 	  canvas.width = window.innerWidth * .99;
 	  canvas.height = window.innerHeight * .96;
 	
-	  const game = new Game(canvas);
-	  game.start();
+	  const menu = document.getElementById('menu');
+	  const startButton = document.getElementById('start');
+	  startButton.addEventListener('click', () => {
+	    menu.className = 'hidden';
+	    new Game(canvas, promptNewGame).start();
+	  });
+	
+	  const gameOver = document.getElementById('game_over');
+	  const retryButton = document.getElementById('retry');
+	  retryButton.addEventListener('click', () => {
+	    gameOver.className = 'hidden';
+	    new Game(canvas, promptNewGame).start();
+	  });
+	
+	  const promptNewGame = (score) => {
+	    gameOver.className = 'shown';
+	  };
 	});
 
 
@@ -65,10 +80,12 @@
 	const key = window.key;
 	
 	class Game {
-	  constructor(canvas) {
+	  constructor(canvas, cb) {
 	    this.windowWidth = canvas.width;
 	    this.windowHeight = canvas.height;
 	    this.ctx = canvas.getContext("2d");
+	
+	    this.gameOverCB = cb;
 	
 	    this.player = new Player(this.windowWidth, this.windowHeight);
 	    this.obstacles = [];
@@ -82,7 +99,10 @@
 	
 	  start() {
 	    this.render();
-	    return this.score;
+	  }
+	
+	  gameOver() {
+	    this.gameOverCB();
 	  }
 	
 	  togglePause(){
@@ -141,7 +161,9 @@
 	      this.renderScore(step);
 	      this.obstacles.forEach((obstacle) => obstacle.render(this.ctx, shift));
 	
-	      if (!this.checkCollissions()) {
+	      if (this.checkCollissions()) {
+	        this.gameOver();
+	      } else {
 	        setTimeout(() => this.render(step), 1000/60);
 	      }
 	    }

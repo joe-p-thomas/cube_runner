@@ -3,13 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="menus.css">
     <script src="./lib/keymaster.js"></script>
     <script src="./bundle.js"></script>
   </head>
   <body>
 
-    <canvas id="root"></canvas>
-    <div id="menu"></div>
+    <div id='menu' class='shown'>
+      <button id='start'>Play Game</button>
+    </div>
+
+    <div id='game_over' class='hidden'>
+      <button id='retry'>Retry</button>
+    </div>
+
+    <canvas id='root'>
+    </canvas>
+
 
   </body>
 </html>

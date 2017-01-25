@@ -6,7 +6,7 @@ x add checks for collision
 - work out better equations for how obstacles move
 x move player to separate file
 - look into fonts
-- how to pause game
+x how to pause game
 - player can accelerate in the vertical direction
 
 # Bonus
@@ -30,4 +30,4 @@ x add shadow under icon
 2. Have menu for game
 3. Have pause screen for game
 4. Better collision detection
-5. 
+5.
