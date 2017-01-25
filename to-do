@@ -15,14 +15,6 @@ x move player to separate file
 - add a cooler icon
 x add shadow under icon
 
-# Peer Review
--
--
--
--
--
-
-
 # Resume
 - fix justification
 - full stack, what did lifecycles do
@@ -30,3 +22,12 @@ x add shadow under icon
 - more tech oriented fd exp
 - try to quantify acheivements for job exp
 - include subject taught to students
+
+
+
+# Today's goals
+1. Be able to pause game
+2. Have menu for game
+3. Have pause screen for game
+4. Better collision detection
+5. 
