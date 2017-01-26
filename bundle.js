@@ -239,7 +239,7 @@
 	    this.y += (.00004 * this.y * this.height);
 	  }
 	
-	  resize(acc) {
+	  resize() {
 	    this.width *= 1.017;
 	    this.height *= 1.017;
 	  }
