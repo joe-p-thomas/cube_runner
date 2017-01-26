@@ -11,6 +11,9 @@
 ## Technology
   Cube Runner is a JavaScript based game, using HTML Canvas for the rendering.
 
+## Technical Implementation
+  
+
 ## Future Features
 - Keep track of high scores
 - Different color options

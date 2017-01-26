@@ -55,7 +55,16 @@
 	  demo.start();
 	
 	  const promptNewGame = (score) => {
+	    let highScore = document.cookie['highScore'];
+	    if (!highScore) {
+	      highScore = score;
+	    } else if (score > highScore) {
+	      highScore = score;
+	    }
+	    document.cookie = `highScore=${highScore}; expires=Thu, 01 Jan 2020 00:00:01 GMT`;
+	    debugger;
 	    document.getElementById('score').innerHTML = score;
+	    document.getElementById('highScore').innerHTML = highScore;
 	    gameOver.className = 'shown';
 	  };
 	  const game = new Game(canvas, promptNewGame);
