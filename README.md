@@ -12,6 +12,6 @@
   Cube Runner is a JavaScript based game, using HTML Canvas for the rendering.
 
 ## Future Features
-[ ] Keep track of high scores
-[ ] Different color options
-[ ] Game mechanic in which there are special obstacles that when collided with, give bonus points
+- Keep track of high scores
+- Different color options
+- Game mechanic in which there are special obstacles that when collided with, give bonus points
