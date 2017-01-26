@@ -52,7 +52,7 @@
 	  canvas.width = window.innerWidth * .99;
 	  canvas.height = window.innerHeight * .96;
 	  const demo = new Demo(canvas);
-	  demo.render();
+	  demo.start();
 	
 	  const promptNewGame = (score) => {
 	    document.getElementById('score').innerHTML = score;
@@ -73,6 +73,13 @@
 	  retryButton.addEventListener('click', () => {
 	    gameOver.className = 'hidden';
 	    game.start();
+	  });
+	
+	  const returnButton = document.getElementById('return_menu');
+	  returnButton.addEventListener('click', () => {
+	    gameOver.className = 'hidden';
+	    menu.className = 'shown';
+	    demo.start();
 	  });
 	});
 
@@ -232,9 +239,9 @@
 	    this.y += (.00004 * this.y * this.height);
 	  }
 	
-	  resize() {
-	    this.width *= 1.015;
-	    this.height *= 1.015;
+	  resize(acc) {
+	    this.width *= 1.017;
+	    this.height *= 1.017;
 	  }
 	
 	  render(ctx, shift) {
@@ -312,6 +319,7 @@
 	  }
 	
 	  start() {
+	    this.paused = false;
 	    this.render();
 	  }
 	

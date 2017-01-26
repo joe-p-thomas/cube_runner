@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   canvas.width = window.innerWidth * .99;
   canvas.height = window.innerHeight * .96;
   const demo = new Demo(canvas);
-  demo.render();
+  demo.start();
 
   const promptNewGame = (score) => {
     document.getElementById('score').innerHTML = score;
@@ -27,5 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
   retryButton.addEventListener('click', () => {
     gameOver.className = 'hidden';
     game.start();
+  });
+
+  const returnButton = document.getElementById('return_menu');
+  returnButton.addEventListener('click', () => {
+    gameOver.className = 'hidden';
+    menu.className = 'shown';
+    demo.start();
   });
 });

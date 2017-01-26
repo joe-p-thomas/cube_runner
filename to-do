@@ -1,11 +1,10 @@
 # MVP
-- add menu to prompt user to start the Game
+x add menu to prompt user to start the Game
 x add checks for collision
 - add better checks for collisions
-- add checks for when to stop displaying an obstacle
 - work out better equations for how obstacles move
 x move player to separate file
-- look into fonts
+x look into fonts
 x how to pause game
 - player can accelerate in the vertical direction
 
@@ -14,10 +13,3 @@ x how to pause game
 - have special obstacles to hit for bonus points
 - add a cooler icon
 x add shadow under icon
-
-# Today's goals
-1. Be able to pause game
-2. Have menu for game
-3. Have pause screen for game
-4. Better collision detection
-5.
