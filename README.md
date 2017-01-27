@@ -6,13 +6,14 @@
   Drive through the obstacles, avoiding any collisions.
 ### Controls
   arrows - drive
+  
   space - pause
 
 ## Technology
   Cube Runner is a JavaScript based game, using HTML Canvas for the rendering.
 
 ## Technical Implementation
-  
+
 
 ## Future Features
 - Keep track of high scores
